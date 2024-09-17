@@ -1,0 +1,138 @@
+----------------------------------------------Switch01_DAPA----------------------------------------------
+Switch>ena
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#hostname Switch01_DAPA
+Switch01_DAPA(config)#vlan 10
+Switch01_DAPA(config-vlan)#name VLAN10
+Switch01_DAPA(config-vlan)#exit
+Switch01_DAPA(config)#vlan 20
+Switch01_DAPA(config-vlan)#name VLAN20
+Switch01_DAPA(config-vlan)#exit
+Switch01_DAPA(config)#vlan 30
+Switch01_DAPA(config-vlan)#name VLAN30
+Switch01_DAPA(config-vlan)#exit
+Switch01_DAPA(config)#exit
+Switch01_DAPA#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Switch01_DAPA#wr
+Building configuration...
+[OK]
+Switch01_DAPA#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch01_DAPA(config)#interface range fa0/1-2
+Switch01_DAPA(config-if-range)#switchport mode access 
+Switch01_DAPA(config-if-range)#switchport access vlan 10
+Switch01_DAPA(config-if-range)#exit
+Switch01_DAPA(config)#interface range fa0/3-4
+Switch01_DAPA(config-if-range)#switchport mode access 
+Switch01_DAPA(config-if-range)#switchport access vlan 20
+Switch01_DAPA(config-if-range)#exit
+Switch01_DAPA(config)#interface range fa0/5-6
+Switch01_DAPA(config-if-range)#switchport mode access 
+Switch01_DAPA(config-if-range)#switchport access vlan 30
+Switch01_DAPA(config-if-range)#exit
+Switch01_DAPA(config)#do wr
+Building configuration...
+[OK]
+Switch01_DAPA(config)#interface vlan 10
+Switch01_DAPA(config-if)#
+%LINK-5-CHANGED: Interface Vlan10, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan10, changed state to up
+
+Switch01_DAPA(config-if)#ip address 192.168.72.1 255.255.255.0
+Switch01_DAPA(config-if)#no shutdown
+Switch01_DAPA(config-if)#exit
+Switch01_DAPA(config)#interface vlan 20
+Switch01_DAPA(config-if)#
+%LINK-5-CHANGED: Interface Vlan20, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan20, changed state to up
+
+Switch01_DAPA(config-if)#ip address 192.168.73.1 255.255.255.0
+Switch01_DAPA(config-if)#no shutdown
+Switch01_DAPA(config-if)#exit
+Switch01_DAPA(config)#interface vlan 30
+Switch01_DAPA(config-if)#
+%LINK-5-CHANGED: Interface Vlan30, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan30, changed state to up
+
+Switch01_DAPA(config-if)#ip address 192.168.74.1 255.255.255.0
+Switch01_DAPA(config-if)#no shutdown
+Switch01_DAPA(config-if)#exit
+Switch01_DAPA(config)#exit
+Switch01_DAPA#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Switch01_DAPA#wr
+Building configuration...
+[OK]
+Switch01_DAPA#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch01_DAPA(config)#ip dhcp pool VLAN10
+Switch01_DAPA(dhcp-config)#network 192.168.72.0 255.255.255.0
+Switch01_DAPA(dhcp-config)#default-router 192.168.72.1
+Switch01_DAPA(dhcp-config)#dns-server 8.8.8.8
+Switch01_DAPA(dhcp-config)#exit
+Switch01_DAPA(config)#ip dhcp pool VLAN20
+Switch01_DAPA(dhcp-config)#network 192.168.73.0 255.255.255.0
+Switch01_DAPA(dhcp-config)#default-router 192.168.73.1
+Switch01_DAPA(dhcp-config)#dns-server 8.8.8.8
+Switch01_DAPA(dhcp-config)#exit
+Switch01_DAPA(config)#ip dhcp pool VLAN30
+Switch01_DAPA(dhcp-config)#network 192.168.74.0 255.255.255.0
+Switch01_DAPA(dhcp-config)#default-router 192.168.74.1
+Switch01_DAPA(dhcp-config)#dns-server 8.8.8.8
+Switch01_DAPA(dhcp-config)#exit
+Switch01_DAPA(config)#interface gigabit
+Switch01_DAPA(config)#interface gigabitEthernet 0/1
+Switch01_DAPA(config-if)#switchport mode trunk
+Switch01_DAPA(config-if)#exit
+Switch01_DAPA(config)#exit
+Switch01_DAPA#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Switch01_DAPA#wr
+Building configuration...
+[OK]
+Switch01_DAPA#
+----------------------------------------------Router01_DAPA----------------------------------------------
+Router>ena
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#hostname Router01_DAPA
+Router01_DAPA(config)#interface giga
+Router01_DAPA(config)#interface gigabitEthernet 0/0
+Router01_DAPA(config-if)#interface giga
+Router01_DAPA(config-if)#interface gigabitEthernet 0/0.10
+Router01_DAPA(config-subif)#encapsulation dot1Q 10
+Router01_DAPA(config-subif)#ip address 192.168.72.1 255.255.255.0
+Router01_DAPA(config-subif)#exit
+Router01_DAPA(config)#interface gigabitEthernet 0/0.20
+Router01_DAPA(config-subif)#encapsulation dot1Q 20
+Router01_DAPA(config-subif)#ip address 192.168.73.1 255.255.255.0
+Router01_DAPA(config-subif)#exit
+Router01_DAPA(config)#interface gigabitEthernet 0/0.30
+Router01_DAPA(config-subif)#encapsulation dot1Q 30
+Router01_DAPA(config-subif)#ip address 192.168.74.1 255.255.255.0
+Router01_DAPA(config-subif)#exit
+Router01_DAPA(config)#do wr
+Building configuration...
+[OK]
+Router01_DAPA(config)#interface gigab
+Router01_DAPA(config)#interface gigabitEthernet 0/0
+Router01_DAPA(config-if)#no sh
+
+Router01_DAPA(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0, changed state to up
+Router01_DAPA(config-if)#end
+Router01_DAPA#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Router01_DAPA#wr
+Building configuration...
+[OK]
+Router01_DAPA#

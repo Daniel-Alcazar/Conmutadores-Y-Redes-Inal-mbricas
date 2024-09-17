@@ -1,0 +1,260 @@
+SWITCH 1:
+Switch>ena
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#vlan 10
+Switch(config-vlan)#name vlan10
+Switch(config-vlan)#exit
+Switch(config)#vlan 20
+Switch(config-vlan)#name vlan20
+Switch(config-vlan)#exit
+Switch(config)#vlan 30
+Switch(config-vlan)#name vlan30
+Switch(config-vlan)#exit
+Switch(config)#inter 
+Switch(config)#interface FastEthermet 0/1
+                                  ^
+% Invalid input detected at '^' marker.
+	
+Switch(config)#interface FastEthernet 0/1
+Switch(config-if)#switchport trunk allowed vlan 10,20,30
+Switch(config-if)#exit
+Switch(config)#interface fast
+Switch(config)#interface fastEthernet 0/2
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 10
+Switch(config-if)#exit
+Switch(config)#exit
+Switch#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Switch#wr
+Building configuration...
+[OK]
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#
+Switch(config)#name S1
+                ^
+% Invalid input detected at '^' marker.
+	
+Switch(config)#switch name s1
+                ^
+% Invalid input detected at '^' marker.
+	
+Switch(config)#hostname S1
+S1(config)#hostname Switch1
+Switch1(config)#ena
+% Incomplete command.
+Switch1(config)#conf t
+                 ^
+% Invalid input detected at '^' marker.
+	
+Switch1(config)#interface fast
+Switch1(config)#interface fastEthernet 0/3
+Switch1(config-if)#switc
+Switch1(config-if)#switchport mode acc
+Switch1(config-if)#switchport mode access 
+Switch1(config-if)#
+Switch1(config-if)#
+Switch1(config-if)#switchport access vlan 20
+Switch1(config-if)#exit
+Switch1(config)#interface fastEthernet 0/4
+Switch1(config-if)#switchport mode access 
+Switch1(config-if)#switchport access vlan 30
+Switch1(config-if)#exit
+Switch1(config)#
+Switch1(config)#wr
+                ^
+% Invalid input detected at '^' marker.
+	
+Switch1(config)#exit
+Switch1#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Switch1#wr
+Building configuration...
+
+
+-----------------------------------------------------------------------------------------------------
+SWITCH 2:
+
+Switch>ena
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#host name
+name(config)#hostname S2_DAPA
+S2_DAPA(config)#vlan 10
+S2_DAPA(config-vlan)#name vlan10
+S2_DAPA(config-vlan)#exit
+S2_DAPA(config)#vlan 20
+S2_DAPA(config-vlan)#name vlan20
+S2_DAPA(config-vlan)#exit
+S2_DAPA(config)#vlan 30
+S2_DAPA(config-vlan)#name vlan30
+S2_DAPA(config-vlan)#exit
+S2_DAPA(config)#exit
+S2_DAPA#
+%SYS-5-CONFIG_I: Configured from console by console
+
+S2_DAPA#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+S2_DAPA(config)#interface fast
+S2_DAPA(config)#interface fastEthernet 0/1
+S2_DAPA(config-if)#switchport mode trunk
+S2_DAPA(config-if)#switchport trunk allowed vlan 10,20,30
+S2_DAPA(config-if)#exit
+S2_DAPA(config)#interface fas
+S2_DAPA(config)#interface fastEthernet 0/2
+S2_DAPA(config-if)#switchport mode trunk
+
+S2_DAPA(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/2, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/2, changed state to up
+
+S2_DAPA(config-if)#switchport trunk allowed vlan 10,20,30
+S2_DAPA(config-if)#exit
+S2_DAPA(config)#
+S2_DAPA(config)#wr
+                ^
+% Invalid input detected at '^' marker.
+	
+S2_DAPA(config)#exit
+S2_DAPA#
+%SYS-5-CONFIG_I: Configured from console by console
+
+S2_DAPA#wr
+Building configuration...
+[OK]
+S2_DAPA#ena
+S2_DAPA#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+S2_DAPA(config)#interface fas
+S2_DAPA(config)#interface fastEthernet 0/3
+S2_DAPA(config-if)#switchport mode trunk
+
+S2_DAPA(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/3, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/3, changed state to up
+
+S2_DAPA(config-if)#switchport trunk allowed vlan 10,20,30
+S2_DAPA(config-if)#exit
+S2_DAPA(config)#exit
+S2_DAPA#
+%SYS-5-CONFIG_I: Configured from console by console
+
+S2_DAPA#wr
+
+-----------------------------------------------------------------------------------------------------
+SWITCH3:
+
+Switch>ena
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#host name S3_DAPA
+                         ^
+% Invalid input detected at '^' marker.
+	
+Switch(config)#hostname S3_DAPA
+S3_DAPA(config)#vlan 10
+S3_DAPA(config-vlan)#name vlan10
+S3_DAPA(config-vlan)#exit
+S3_DAPA(config)#vlan 20
+S3_DAPA(config-vlan)#name vlan20
+S3_DAPA(config-vlan)#exit
+S3_DAPA(config)#vlan 30
+S3_DAPA(config-vlan)#name vlan30
+S3_DAPA(config-vlan)#exit
+S3_DAPA(config)#interface fas
+S3_DAPA(config)#interface fastEthernet 0/1
+S3_DAPA(config-if)#switchport mode trunk
+S3_DAPA(config-if)#switchport trunk allowed vlan 10,20,30
+S3_DAPA(config-if)#exit
+S3_DAPA(config)#interface fas
+S3_DAPA(config)#interface fastEthernet 0/2
+S3_DAPA(config-if)#switchport mode access
+S3_DAPA(config-if)#switchport access vlan 10
+S3_DAPA(config-if)#exit
+S3_DAPA(config)#interface fastEthernet 0/3
+S3_DAPA(config-if)#switchport mode access
+S3_DAPA(config-if)#switchport access vlan 20
+S3_DAPA(config-if)#exit
+S3_DAPA(config)#interface fastEthernet 0/4
+S3_DAPA(config-if)#switchport mode access
+S3_DAPA(config-if)#switchport access vlan 30
+S3_DAPA(config-if)#exit
+S3_DAPA(config)#exit
+S3_DAPA#
+%SYS-5-CONFIG_I: Configured from console by console
+
+S3_DAPA#wr
+Building configuration...
+[OK]
+
+-----------------------------------------------------------------------------------------------------
+ROUTER1:
+Router>ena 
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#hostname Router1_DAPA
+Router1_DAPA(config)#interface g0/0
+Router1_DAPA(config-if)#no sh
+
+Router1_DAPA(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up
+
+Router1_DAPA(config-if)#exit
+Router1_DAPA(config)#inferface g0/0.10
+                       ^
+% Invalid input detected at '^' marker.
+	
+Router1_DAPA(config)#interface g0/0.10
+Router1_DAPA(config-subif)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0.10, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.10, changed state to up
+
+Router1_DAPA(config-subif)#encapsulation dot1Q 10
+Router1_DAPA(config-subif)#ip address 172.17.72.1 255.255.255.0
+Router1_DAPA(config-subif)#exit
+Router1_DAPA(config)#interface g0/0.20
+Router1_DAPA(config-subif)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0.20, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.20, changed state to up
+
+Router1_DAPA(config-subif)#encapsulation dot1Q 20
+Router1_DAPA(config-subif)#ip address 172.17.73.1 255.255.255.0
+Router1_DAPA(config-subif)#exit
+Router1_DAPA(config)#interface g0/0.30
+Router1_DAPA(config-subif)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0.30, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.30, changed state to up
+
+Router1_DAPA(config-subif)#encapsulation dot1Q 30
+Router1_DAPA(config-subif)#ip address 172.17.74.1 255.255.255.0
+Router1_DAPA(config-subif)#exit
+Router1_DAPA(config)#ip dhcp pool vlan10
+Router1_DAPA(dhcp-config)#network 172.17.72.0 255.255.255.0
+Router1_DAPA(dhcp-config)#default-router 172.17.72.1
+Router1_DAPA(dhcp-config)#exit
+Router1_DAPA(config)#ip dhcp pool vlan20
+Router1_DAPA(dhcp-config)#network 172.17.73.0 255.255.255.0
+Router1_DAPA(dhcp-config)#default-router 172.17.73.1
+Router1_DAPA(dhcp-config)#exit
+Router1_DAPA(config)#ip dhcp pool vlan30
+Router1_DAPA(dhcp-config)#network 172.17.74.0 255.255.255.0
+Router1_DAPA(dhcp-config)#default-router 172.17.74.1
+Router1_DAPA(dhcp-config)#exit
+Router1_DAPA(config)#exit
+Router1_DAPA#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Router1_DAPA#wr
+Building configuration...
+[OK]

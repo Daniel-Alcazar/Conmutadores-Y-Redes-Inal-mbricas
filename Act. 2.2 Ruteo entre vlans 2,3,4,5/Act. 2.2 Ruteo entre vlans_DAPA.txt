@@ -1,0 +1,133 @@
+--------------------------------------------------------SWITCH CENTRAL--------------------------------------------------------
+Switch>ena
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#hostname Switch_Central
+Switch_Central(config)#vlan 10
+Switch_Central(config-vlan)#name VLAN10
+Switch_Central(config-vlan)#exit
+Switch_Central(config)#vlan 20
+Switch_Central(config-vlan)#name VLAN20
+Switch_Central(config-vlan)#exit
+Switch_Central(config)#vlan 30
+Switch_Central(config-vlan)#name VLAN30
+Switch_Central(config-vlan)#exit
+Switch_Central(config)#vlan 40
+Switch_Central(config-vlan)#name VLAN40
+Switch_Central(config-vlan)#exit
+Switch_Central(config)#vlan 50
+Switch_Central(config-vlan)#name VLAN50
+Switch_Central(config-vlan)#exit
+Switch_Central(config)#interface range fastEthernet 0/1-2
+Switch_Central(config-if-range)#switchport mode access 
+Switch_Central(config-if-range)#switchport access vlan 20
+Switch_Central(config-if-range)#exit
+Switch(config)#interface range fastEthernet 0/3-4
+Switch_Central(config-if-range)#switchport mode access 
+Switch_Central(config-if-range)#switchport access vlan 30
+Switch_Central(config-if-range)#exit
+Switch_Central(config)#interface range fastEthernet 0/5-6
+Switch_Central(config-if-range)#switchport mode access 
+Switch_Central(config-if-range)#switchport access vlan 40
+Switch_Central(config-if-range)#exit
+Switch_Central(config)#interface range fastEthernet 0/7-8
+Switch_Central(config-if-range)#switchport mode access 
+Switch_Central(config-if-range)#switchport access vlan 50
+Switch_Central(config-if-range)#exit
+Switch_Central(config)#interface VLAN20
+Switch_Central(config-if)#
+%LINK-5-CHANGED: Interface Vlan32, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan20, changed state to up
+
+Switch_Central(config-if)#ip address 192.168.72.1 255.255.255.0
+Switch_Central(config-if)#exit
+Switch_Central(config)#interface VLAN30
+Switch_Central(config-if)#
+%LINK-5-CHANGED: Interface Vlan30, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan30, changed state to up
+
+Switch_Central(config-if)#ip address 192.168.73.1 255.255.255.0
+Switch_Central(config-if)#exit
+Switch_Central(config)#interface VLAN40
+Switch_Central(config-if)#
+%LINK-5-CHANGED: Interface Vlan40, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan40, changed state to up
+
+Switch_Central(config-if)#ip address 192.168.74.1 255.255.255.0
+Switch_Central(config-if)#exit
+Switch_Central(config)#interface VLAN50
+Switch_Central(config-if)#
+%LINK-5-CHANGED: Interface Vlan50, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan50, changed state to up
+
+Switch_Central(config-if)#ip address 192.168.75.1 255.255.255.0
+Switch_Central(config-if)#exit
+Switch_Central(config)#do wr
+Building configuration...
+[OK]
+Switch_Central(config)#inter
+Switch_Central(config)#interface fast
+Switch_Central(config)#interface fastEthernet 0/24
+Switch_Central(config-if)#sw
+Switch_Central(config-if)#switchport trunk enca
+Switch_Central(config-if)#switchport trunk encapsulation dot1q
+Switch_Central(config-if)#
+Switch_Central(config-if)#exit
+Switch_Central(config)#do wr
+Building configuration...
+[OK]
+
+--------------------------------------------------------SWITCH1--------------------------------------------------------
+
+Switch>ena
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#hostname Switch1
+Switch1(config)#vlan 20
+Switch1(config-vlan)#name VLAN20
+Switch1(config-vlan)#exit
+Switch1(config)#vlan 30
+Switch1(config-vlan)#name VLAN30
+Switch1(config-vlan)#exit
+Switch1(config)#vlan 40
+Switch1(config-vlan)#name VLAN40
+Switch1(config-vlan)#exit
+Switch1(config)#vlan 50
+Switch1(config-vlan)#name VLAN50
+Switch1(config-vlan)#exit
+Switch1(config)#Interface range fastEthernet 0/1-2
+Switch1(config-if-range)#switch
+Switch1(config-if-range)#switchport mode access
+Switch1(config-if-range)#switchport access vlan 20
+Switch1(config-if-range)#exit
+Switch1(config)#Interface range fastEthernet 0/3-4
+Switch1(config-if-range)#switchport mode access
+Switch1(config-if-range)#switchport access vlan 30
+Switch1(config-if-range)#exit
+Switch1(config)#Interface range fastEthernet 0/5-6
+Switch1(config-if-range)#switchport mode access
+Switch1(config-if-range)#switchport access vlan 40
+Switch1(config-if-range)#exit
+Switch1(config)#Interface range fastEthernet 0/7-8
+Switch1(config-if-range)#switchport mode access
+Switch1(config-if-range)#switchport access vlan 50
+Switch1(config-if-range)#exit
+Switch1(config)#inter
+Switch1(config)#interface fast
+Switch1(config)#interface fastEthernet 0/24
+Switch1(config-if)#swi
+Switch1(config-if)#switchport mode trunk
+
+Switch1(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/24, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/24, changed state to up
+
+Switch1#wr
+Building configuration...
+[OK]
+Switch1#
